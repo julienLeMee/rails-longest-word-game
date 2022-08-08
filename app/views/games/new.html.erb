@@ -1,0 +1,17 @@
+<h1 class="m-3" >Longest word Game</h1>
+
+<form id="new-game" class="form-label m-3 align-items-center" action="/new" method="get">
+  <input class="btn btn-primary" name="new" type="submit" value="NEW LETTERS">
+</form>
+
+<ul class="letters">
+  <% @letters.map do |member| %>
+    <li><%= member %></li>
+  <% end %>
+</ul>
+
+<form id="new-game" action="/score" method="post" data-turbo="false">
+  <input type="text" name="answer" value="<%= params[:answer] %>" placeholder="What is your word?">
+  <input class="btn btn-succes" type="submit" value="SCORE">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>
